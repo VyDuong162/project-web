@@ -1,3 +1,3 @@
 <?php
-    echo 'PHP !Trang chu';
+    echo '<H1>PHP !Trang chu</H1>';
 ?>
