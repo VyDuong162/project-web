@@ -48,7 +48,7 @@
 
     echo '</table>';
     ?>
-    <br>
+    
     <h1>Table kết hợp PHP và HTML</h1>
     <table border="1">  
         <?php for ($i = 0; $i < 4; $i++) : ?>
