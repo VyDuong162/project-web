@@ -11,8 +11,15 @@
          // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
          include_once(__DIR__.'/../dbconnect.php');
-         $tenphuongthuc='Bằng ATM';
-         $sql ="INSERT INTO `hinhthucthanhtoan`(httt_ten) VALUES(N'{tenphuongthuc}');";
+         $httt_ma='2';
+         $httt_ten='Bằng phương thức..';
+         $sql =<<<EOT
+         UPDATE hinhthucthanhtoan
+            SET
+		        httt_ten= $httt_ten
+	        WHERE 
+		        httt_ma=$httt_ma;
+EOT;
          // 3. Thực thi
         mysqli_query($conn, $sql);
     ?>
