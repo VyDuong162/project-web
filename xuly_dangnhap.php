@@ -6,7 +6,7 @@
         echo "Chào bạn <span style='color:blue'>{$ten_dangnhap}</span> đến với website...";
     }
     else{
-        echo "Đăng nhập thất bại!!";
+        echo "Đăng nhập thất bại!";
     }
     //}
 ?>
