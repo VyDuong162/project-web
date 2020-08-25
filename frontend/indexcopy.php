@@ -11,7 +11,7 @@
          // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
          include_once(__DIR__.'/../dbconnect.php');
-         $httt_ma='2';
+         $httt_ma=2;
          $httt_ten='Bằng phương thức..';
          $sql =<<<EOT
          UPDATE hinhthucthanhtoan
