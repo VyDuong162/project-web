@@ -6,7 +6,7 @@
     <title>Thực thi câu lệnh INSERT </title>
 </head>
 <body>
-    <h1>INSERT PHP</h1>
+    <h1>UPDATE PHP</h1>
     <?php
          // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
@@ -16,9 +16,9 @@
          $sql =<<<EOT
          UPDATE hinhthucthanhtoan
             SET
-		        httt_ten= $httt_ten
+		        httt_ten= N'$httt_ten'
 	        WHERE 
-		        httt_ma=$httt_ma;
+		        httt_ma=N'$httt_ma';
 EOT;
          // 3. Thực thi
         mysqli_query($conn, $sql);
