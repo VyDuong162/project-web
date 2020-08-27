@@ -13,7 +13,7 @@
          include_once(__DIR__.'/../dbconnect.php');
          $httt_ma=2;
         $sql =<<<EOT
-        DELETE FROM `hinhthucthanhtoan` WHERE httt_ma=$httt_ma;
+        DELETE  FROM hinhthucthanhtoan WHERE httt_ma=$httt_ma
 EOT;
     
          // 3. Thực thi
