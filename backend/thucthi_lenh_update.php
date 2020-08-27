@@ -14,7 +14,7 @@
          $httt_ma=2;
          $httt_ten='Bằng phương thức..';
          $sql =<<<EOT
-         UPDATE hinhthucthanhtoan
+         UPDATE sanpham
             SET
 		        httt_ten= N'$httt_ten'
 	        WHERE 

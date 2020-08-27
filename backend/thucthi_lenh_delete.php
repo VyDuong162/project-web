@@ -11,8 +11,11 @@
          // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
          include_once(__DIR__.'/../dbconnect.php');
-         $tenphuongthuc='Bằng ATM';
-        $sql ="DELETE * FROM hinhthucthanhtoan WHERE httt_ten='N{$tenphuongthuc};";
+         $httt_ma=2;
+        $sql =<<<EOT
+        DELETE FROM `hinhthucthanhtoan` WHERE httt_ma=$httt_ma;
+EOT;
+    
          // 3. Thực thi
         mysqli_query($conn, $sql);
     ?>
