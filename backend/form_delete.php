@@ -37,8 +37,8 @@ EOT;
            
                 <td><?= $httt['ma']; ?></td>
                 <td><?= $httt['ten']; ?></td>
-                <td><a href="xuly_xoa.php?idxoa=<?php echo $httt['ma'];?>"> XÓA</a></td>  
-                <td><a href="xuly_xoa.php?idupdate=<?php echo $httt['ma'];?>"> update</a></td>  
+                <td><a href="xuly_xoa.php?idxoa=<?php echo $httt['ma'];?>"> XÓA</a> | 
+                <a href="xuly_xoa.php?idupdate=<?php echo $httt['ma'];?>"> CẬP NHẬT</a></td>  
         </tr>
         <?php endforeach; ?>
     </table>
