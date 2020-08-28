@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>While PHP</h1>
     <?php
-        include_once(__DIR__.'/../dbconnect.php');
-      // 2. Query
-      //here doc
-        $sql=<<<EOT
+    include_once(__DIR__ . '/../dbconnect.php');
+    // 2. Query
+    //here doc
+    $sql = <<<EOT
         SELECT httt_ma , httt_ten FROM `hinhthucthanhtoan`;
 
 EOT;
     //3. Yêu cầu PHP thực thi query 
-    $result = mysqli_query($conn,$sql);
+    $result = mysqli_query($conn, $sql);
     //4. tạo mảng chứa dữ liệu
-    $data =[];
-    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+    $data = [];
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $data[] = array(
-            'ma'=> $row['httt_ma'],
-            'ten'=> $row['httt_ten'],
+            'ma' => $row['httt_ma'],
+            'ten' => $row['httt_ten'],
         );
     }
     ?>
@@ -31,12 +33,15 @@ EOT;
             <th>Mã Thanh Toán</th>
             <th>Tên Thanh Toán</th>
         </tr>
-        <tr>
-            <?php foreach($data as $bien ) :?>
+        <?php foreach ($data as $httt) : ?>
+            <tr>
+
                 <td><?= $httt['ma']; ?></td>
                 <td><?= $httt['ten']; ?></td>
-            <?php endforeach; ?>
-        </tr>
+
+            </tr>
+        <?php endforeach; ?>
     </table>
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 <?php
-   // if(isset($_GET['btn_dangnhap'])){
+   if(isset($_GET['btn_dangnhap'])){
     $ten_dangnhap = $_GET['txt_username'];
     $matkhau = $_GET['txt_password'];
     if( $ten_dangnhap == 'admin' && $matkhau == '123456' ){
@@ -8,5 +8,5 @@
     else{
         echo "Đăng nhập thất bại!!";
     }
-    //}
+    }
 ?>

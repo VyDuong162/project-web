@@ -12,7 +12,7 @@
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
          include_once(__DIR__.'/../dbconnect.php');
          $tenphuongthuc='Chuyển qua ATM';
-         $sql ="INSERT INTO `sanpham`(TENSP) VALUES('N{$tenphuongthuc}');";
+         $sql ="INSERT INTO `sanpham`(TENSP) VALUES(N'{$tenphuongthuc}');";
          // 3. Thực thi
         mysqli_query($conn, $sql);
     ?>

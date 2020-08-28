@@ -7,7 +7,7 @@
 </head>
 <body>
     <H1>Form đăng nhập</H1>
-    <form name='frmdangnhap' id='frmdanghap' action="xuly-dangnhap.php" method="get">
+    <form name='frmdangnhap' id='frmdanghap' action="xuly_dangnhap.php" method="get">
         Tên đăng nhập:
         <input type="text" name="txt_username" id="txt_username"><br>
        <br> Mật khẩu:

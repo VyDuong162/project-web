@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thực thi câu lệnh INSERT </title>
+    <title>Thực thi câu lệnh UPDATE </title>
 </head>
 <body>
     <h1>UPDATE PHP</h1>
