@@ -8,7 +8,7 @@
 <body>
     <h1>While PHP</h1>
     <?php
-        include_once(__DIR__.'/../dbconnect.php');
+        include_once(__DIR__.'/../../dbconnect.php');
       // 2. Query
       //here doc
         $sql=<<<EOT

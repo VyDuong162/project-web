@@ -16,7 +16,7 @@
         if(isset($_POST['btn_luuten'])){
         // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
-         include_once(__DIR__.'/../dbconnect.php');
+         include_once(__DIR__.'/../../dbconnect.php');
          
              $httt_ten = $_POST['txt_tenmoi'];
              $sql ="INSERT INTO `hinhthucthanhtoan`(httt_ten) VALUES('N{$httt_ten}');";

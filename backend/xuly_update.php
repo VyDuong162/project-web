@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    include_once(__DIR__ . '/../dbconnect.php');
+    include_once(__DIR__ . '/../../dbconnect.php');
     $id = $_GET['idupdate'];
     $sql_select = <<<EOT
         SELECT  httt_ma, httt_ten  FROM `hinhthucthanhtoan` WHERE httt_ma='$id';

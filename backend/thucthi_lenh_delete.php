@@ -10,7 +10,7 @@
     <?php
          // Truy vấn database để lấy danh sách
          // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
-         include_once(__DIR__.'/../dbconnect.php');
+         include_once(__DIR__.'/../../dbconnect.php');
          $httt_ma=2;
         $sql =<<<EOT
         DELETE  FROM hinhthucthanhtoan WHERE httt_ma=$httt_ma
