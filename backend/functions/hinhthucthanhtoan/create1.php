@@ -55,7 +55,7 @@
                           'msg' => 'Tên hình thức thanh toán phải có ít nhất 3 ký tự'
                         ];
                       }
-                    if (!empty($tenmoi) && strlen($tenmoi) <= 50) {
+                    if (!empty($tenmoi) && strlen($tenmoi) > 50) {
                         $errors['$tenmoi'][] = [
                           'rule' => 'required',
                           'rule_value' => true,
