@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index</title>
     <?php include_once(__DIR__.'/../../layouts/style.php');?>
+    <link rel="stylesheet" href="/project-web/assets/vendor/DataTables/datatables.min.css" type="text/css">
 </head>
 <body>
     <?php include_once(__DIR__.'/../../layouts/partials/header.php');?>
     <div class="container">
         <div class="row">
     <?php include_once(__DIR__.'/../../layouts/partials/sildebar.php');?>
-        <div class="col-md-8">
+        <div class="col-md-10">
         <h1>Danh sách sản phẩm</h1>
             <?php
             include_once(__DIR__.'/../../../dbconnect.php');
@@ -53,28 +54,33 @@ EOT;
         }
         ?> 
         <a href="create.php"><button type="button" class="btn btn-primary">Thêm mới</button></a> <br><br>
-        <table class="table table-bordered">
+        
+        <table id="id_danhsach" class="table mx-auto table-bordered">
+        <thead>
             <tr>
-                <th>Mã SP</th>
-                <th>Tên sản phâm</th>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
                 <th>Giá sản phẩm</th>
                 <th>Loại sản phẩm</th>
                 <th>Nhà sản xuất</th>
                 <th>Khuyến mãi</th>
                 <th>Hành động</th>
-            </tr> 
-            <?php foreach($data as $httt ) :?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($data as $sp ) :?>
             <tr>
-                    <td><?= $httt['sp_ma']; ?></td>
-                    <td><?= $httt['sp_ten']; ?></td>
-                    <td><?= $httt['sp_gia']; ?></td>
-                    <td><?= $httt['lsp_ten']; ?></td>
-                    <td><?= $httt['nsx_ten']; ?></td>
-                    <td><?= $httt['km_tomtat']; ?></td>
-                    <td><a href="delete.php?idxoa=<?php echo $httt['ma'];?>" class=" btn btn-danger" > XÓA</a> 
-                    <a href="edit.php?idupdate=<?php echo $httt['ma'];?>"class=" btn btn-success"> SỬA</a></td>  
+                    <td><?= $sp['sp_ma']; ?></td>
+                    <td><?= $sp['sp_ten']; ?></td>
+                    <td><?= $sp['sp_gia']; ?></td>
+                    <td><?= $sp['lsp_ten']; ?></td>
+                    <td><?= $sp['nsx_ten']; ?></td>
+                    <td><?= $sp['km_tomtat']; ?></td>
+                    <td><button class="btn btn-danger btndelete"data-idxoa=<?php echo $sp['sp_ma'];?>>Xóa</button>
+                    <a href="edit.php?idupdate=<?php echo $sp['sp_ma'];?>"class=" btn btn-success"> SỬA</a></td>  
             </tr>
             <?php endforeach; ?>
+            </tbody>
         </table>
         </div>
     </div>
@@ -83,6 +89,39 @@ EOT;
     </div>
     <?php include_once(__DIR__.'/../../layouts/partials/footer.php');?>
     <?php include_once(__DIR__.'/../../layouts/scripts.php');?>
-
+    <script src="/project-web/assets/vendor/DataTables/datatables.min.js"></script>
+    <script src="/project-web/assets/vendor/DataTables/Buttons-1.6.3/js/buttons.bootstrap4.min.js"></script>
+    <script src="/project-web/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="/project-web/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script> 
+    $(document).ready( function () {
+        $('#id_danhsach').DataTable({
+            dom: 'Blfrtip',
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ]
+        });
+        $('.btndelete').click(function(){
+                swal({
+                title: "Bạn có chắn chắn xóa không?",
+                text: "Không thể phục hồi dữ liệu khi xóa!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    var sp_ma = $(this).data('idxoa');
+                    var url= 'delete.php?idxoa='+ sp_ma;
+                    location.href = url; 
+                } else {
+                    swal("Hủy xóa thành công!");
+                }
+            });
+        });
+        
+    });
+    </script>
+   
 </body>
 </html>
