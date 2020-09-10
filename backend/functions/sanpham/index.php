@@ -12,10 +12,10 @@
 </head>
 <body>
     <?php include_once(__DIR__.'/../../layouts/partials/header.php');?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
     <?php include_once(__DIR__.'/../../layouts/partials/sildebar.php');?>
-        <div class="col-md-10">
+        <div class="col-md-8">
         <h1>Danh sách sản phẩm</h1>
             <?php
             include_once(__DIR__.'/../../../dbconnect.php');
