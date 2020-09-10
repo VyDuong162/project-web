@@ -47,43 +47,43 @@
                         <!-- Input cho phép người dùng chọn FILE -->
                         <input type="file" class="form-control" id="hsp_tentaptin" name="hsp_tentaptin">
                     </div>
-                    <button class="btn btn-primary" name="btnSave">Lưu</button>
+                    <button class="btn btn-primary" name="btnsave">Lưu</button>
                     <a href="index.php" class="btn btn-outline-secondary" name="btnBack" id="btnBack">Quay về</a>
                     </form>
-                        <?php
-                        if (isset($_POST['btnsave'])) {
-                            $sp_ma = $_POST['sp_ma'];
-                            if(isset($_FILES['hsp_tentaptin'])){
-                                $upload_dir = __DIR__."/../../../assets/upload/";
-                                $subdir = 'product/';
-                                // Đối với mỗi file, sẽ có các thuộc tính như sau:
-                            // $_FILES['hsp_tentaptin']['name']     : Tên của file chúng ta upload
-                            // $_FILES['hsp_tentaptin']['type']     : Kiểu file mà chúng ta upload (hình ảnh, word, excel, pdf, txt, ...)
-                            // $_FILES['hsp_tentaptin']['tmp_name'] : Đường dẫn đến file tạm trên web server
-                            // $_FILES['hsp_tentaptin']['error']    : Trạng thái của file chúng ta upload, 0 => không có lỗi
-                            // $_FILES['hsp_tentaptin']['size']     : Kích thước của file chúng ta upload
-                            // 3.1. Chuyển file từ thư mục tạm vào thư mục Uploads
-                            // Nếu file upload bị lỗi, tức là thuộc tính error > 0
-                            if ($_FILES['hsp_tentaptin']['error'] > 0) {
-                                echo 'File Upload Bị Lỗi'; die;
-                                }
-                                else{
-                                    $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
-                                    $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin; //20200530154922_hoahong.jpg
-                                    move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $subdir . $tentaptin);
-                    
-                                }
-                            // 3.2. Lưu thông tin file upload vào database
-                            // Câu lệnh INSERT
-                            $sql = "INSERT INTO `hinhsanpham` (hsp_tentaptin, hsp_ma) VALUES ('$tentaptin', $sp_ma);";
-                            // print_r($sql); die;
-                            // Thực thi INSERT
-                            mysqli_query($conn, $sql);
-                            // Đóng kết nối
-                            mysqli_close($conn);
-                            // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
-                            echo '<script>location.href = "index.php";</script>';
-                    
+                <?php
+                    if (isset($_POST['btnsave'])) {
+                        $sp_ma = $_POST['sp_ma'];
+                        if(isset($_FILES['hsp_tentaptin'])){
+                            $upload_dir = __DIR__."/../../../assets/uploads/";
+                            $subdir = 'products/';
+                            // Đối với mỗi file, sẽ có các thuộc tính như sau:
+                        // $_FILES['hsp_tentaptin']['name']     : Tên của file chúng ta upload
+                        // $_FILES['hsp_tentaptin']['type']     : Kiểu file mà chúng ta upload (hình ảnh, word, excel, pdf, txt, ...)
+                        // $_FILES['hsp_tentaptin']['tmp_name'] : Đường dẫn đến file tạm trên web server
+                        // $_FILES['hsp_tentaptin']['error']    : Trạng thái của file chúng ta upload, 0 => không có lỗi
+                        // $_FILES['hsp_tentaptin']['size']     : Kích thước của file chúng ta upload
+                        // 3.1. Chuyển file từ thư mục tạm vào thư mục Uploads
+                        // Nếu file upload bị lỗi, tức là thuộc tính error > 0
+                        if ($_FILES['hsp_tentaptin']['error'] > 0) {
+                            echo 'File Upload Bị Lỗi'; die;
+                            }
+                            else{
+                                $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
+                                $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin; //20200530154922_hoahong.jpg
+                                move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $subdir . $tentaptin);
+                
+                            }
+                        // 3.2. Lưu thông tin file upload vào database
+                        // Câu lệnh INSERT
+                        $sql = "INSERT INTO `hinhsanpham` (hsp_tentaptin, sp_ma) VALUES ('$tentaptin', $sp_ma);";
+                        // print_r($sql); die;
+                        // Thực thi INSERT
+                        mysqli_query($conn, $sql);
+                        // Đóng kết nối
+                        mysqli_close($conn);
+                        // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
+                        echo '<script>location.href = "index.php";</script>';
+                
                         }
                     }
                 ?>
