@@ -57,7 +57,7 @@
                                         );
                     }
                     $dataKhuyenMai[] = array(
-                        'sp_ma'=> $rowKhuyenMai['sp_ma'],
+                        'km_ma'=> $rowKhuyenMai['km_ma'],
                         'km_tomtat' => $km_tomtat,
                     );
                 }
@@ -95,7 +95,7 @@
                 <label for="sp_lsp">Loại sản phẩm</label>
                 <select class="form-control" name="lsp_ma" id="lsp_ma" >
                 <?php foreach($dataloaisanpham as $lsp):?>
-                <option value="<?php echo $lsp['lsp_ma']?>"><?php echo $lsp['lsp_ten']?></option>
+                    <option value="<?php echo $lsp['lsp_ma']?>"><?php echo $lsp['lsp_ten']?></option>
                 <?php endforeach;?>
                 </select>
             </div>
@@ -103,22 +103,23 @@
                 <label for="sp_nsx">Nhà sản xuất</label>
                 <select class="form-control" name="nsx_ma" id="nsx_ma" >
                 <?php foreach($dataNhaSanXuat as $nsx):?>
-                <option value="<?php echo $nsx['nsx_ma']?>"><?php echo $nsx['nsx_ten']?></option>
+                    <option value="<?php echo $nsx['nsx_ma']?>"><?php echo $nsx['nsx_ten']?></option>
                 <?php endforeach;?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="sp_km">Khuyến mãi </label>
                 <select class="form-control" name="km_ma" id="km_ma" >
-                <?php foreach($dataKhuyenMai as $km):?>
-                <option value="<?= $km['km_ma']?>"><?= $km['km_tomtat']?></option>
-                <?php endforeach;?>
+                    <option value="">Không áp dụng khuyến mãi</option>
+                    <?php foreach($dataKhuyenMai as $km):?>
+                        <option value="<?= $km['km_ma']?>"><?= $km['km_tomtat']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
             <button class="btn btn-primary" name="btnsave" type="submit" >Lưu dữ liệu</button>
         </form>
             <?php
-             if (isset($_POST['btnSave'])) {
+             if (isset($_POST['btnsave'])) {
                 // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
                 $ten = $_POST['sp_ten'];
                 $gia = $_POST['sp_gia'];
