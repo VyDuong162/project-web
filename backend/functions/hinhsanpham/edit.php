@@ -13,7 +13,7 @@
         <div class="row">
     <?php include_once(__DIR__.'/../../layouts/partials/sildebar.php');?>
             <div class="col-md-8">
-                <h1>Thêm mới hình sản phẩm</h1>
+                <h1>Hiệu chỉnh</h1>
                 <?php
                     include_once(__DIR__.'/../../../dbconnect.php');
                     $sqlsanpham = "SELECT * FROM sanpham ";
@@ -28,8 +28,21 @@
                             'sp_tomtat' => $sp_tomtat,
                         );
                     }
+                    // Chuẩn bị câu truy vấn $sqlSelect, lấy dữ liệu ban đầu của record cần update
+                    // Lấy giá trị khóa chính được truyền theo dạng QueryString Parameter key1=value1&key2=value2...
+                    $hsp_ma = $_GET['idupdate'];
+                    $sqlSelect = "SELECT * FROM `hinhsanpham` WHERE hsp_ma=$hsp_ma;";
+                    // Thực thi câu truy vấn SQL để lấy về dữ liệu ban đầu của record cần update
+                    $resultSelect = mysqli_query($conn, $sqlSelect);
+                    $hinhsanphamRow = mysqli_fetch_array($resultSelect, MYSQLI_ASSOC);
+
                 ?> 
                 <form name="frmhinhsanpham" id="frmhinhanpham" method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="">Hình ảnh hiện tại</label>
+                    <br />
+                    <img src="/project-web/assets/uploads/products/<?= $hinhsanphamRow['hsp_tentaptin'] ?>" class="img-fluid" width="300px" />
+                </div>
                     <div class="form-group">
                         <label for="sp_ma">Sản phẩm</label>
                         <select class="form-control" id="sp_ma" name="sp_ma">
@@ -68,6 +81,15 @@
                             echo 'File Upload Bị Lỗi'; die;
                             }
                             else{
+
+                                // Xóa file cũ để tránh rác trong thư mục UPLOADS
+                                // Kiểm tra nếu file có tổn tại thì xóa file đi
+                                $old_file = $upload_dir . $subdir . $hinhsanphamRow['hsp_tentaptin'];
+                                if (file_exists($old_file)) {
+                                    // Hàm unlink(filepath) dùng để xóa file trong PHP
+                                    unlink($old_file);
+                                  }
+                    
                                 $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
                                 $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin; //20200530154922_hoahong.jpg
                                 move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $subdir . $tentaptin);
