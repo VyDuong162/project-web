@@ -238,18 +238,45 @@
     <?php include_once(__DIR__.'/../../layouts/partials/footer.php');?>
     <?php include_once(__DIR__.'/../../layouts/scripts.php');?>
     <script>
-    // Hiển thị ảnh preview (xem trước) khi người dùng chọn Ảnh
-    const reader = new FileReader();
-    const fileInput = document.getElementById("hsp_tentaptin");
-    const img = document.getElementById("preview-img");
-    reader.onload = e => {
-      img.src = e.target.result;
-    }
-    fileInput.addEventListener('change', e => {
-      const f = e.target.files[0];
-      reader.readAsDataURL(f);
-    })
-  </script>
+        // Đăng ký sự kiện Click nút Thêm Sản phẩm
+        $('#btnThemSanPham').click(function() {
+            // debugger;
+            // Lấy thông tin Sản phẩm
+            var sp_ma = $('#sp_ma').val();
+            var sp_gia = $('#sp_ma option:selected').data('sp_gia');
+            var sp_ten = $('#sp_ma option:selected').text();
+            var soluong = $('#soluong').val();
+            var thanhtien = (soluong * sp_gia);
+            
+            // Tạo mẫu giao diện HTML Table Row
+            var htmlTemplate = '<tr>'; 
+            htmlTemplate += '<td>' + sp_ten + '<input type="hidden" name="sp_ma[]" value="' + sp_ma + '"/></td>';
+            htmlTemplate += '<td>' + soluong + '<input type="hidden" name="sp_dh_soluong[]" value="' + soluong + '"/></td>';
+            htmlTemplate += '<td>' + sp_gia + '<input type="hidden" name="sp_dh_dongia[]" value="' + sp_gia + '"/></td>';
+            htmlTemplate += '<td>' + thanhtien + '</td>';
+            htmlTemplate += '<td><button type="button" class="btn btn-danger btn-delete-row">Xóa</button></td>';
+            htmlTemplate += '</tr>';
+            // Thêm vào TABLE BODY
+            $('#tblChiTietDonHang tbody').append(htmlTemplate);
+            // Clear
+            $('#sp_ma').val('');
+            $('#soluong').val('');
+        });
+        // Đăng ký sự kiện cho tất cả các nút XÓA có sử dụng class .btn-delete-row
+        $('#chiTietDonHangContainer').on('click', '.btn-delete-row', function() {
+            // Ta có cấu trúc
+            // <tr>
+            //    <td>
+            //        <button class="btn-delete-row"></button>     <--- $(this) chính là đối tượng đang được người dùng click
+            //    </td>
+            // </tr>
+            
+            // Từ nút người dùng click -> tìm lên phần tử cha -> phần tử cha
+            // Xóa dòng TR
+            $(this).parent().parent()[0].remove();
+        });
+    </script>
+
 
 </body>
 </html>
