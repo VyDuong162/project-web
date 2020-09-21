@@ -13,7 +13,7 @@ if (session_id() === '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NenTang.vn</title>
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
-    <?php include_once(__DIR__ . '/../layouts/styles.php'); ?>
+    <?php include_once(__DIR__ . '/../layouts/style.php'); ?>
     <link href="/project-web/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
