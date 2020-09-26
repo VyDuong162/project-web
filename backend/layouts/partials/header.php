@@ -4,12 +4,24 @@
     session_start();
 }
 ?>
-<nav class="navbar navbar-dark bg-dark shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Nền tảng</a>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Nền tảng</a>
   <ul class="navbar-nav px-3 mr-auto">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="/backend/pages/dashboard.php">Bảng tin</a>
-    </li>
+        <a class="nav-link" href="/project-web/backend/pages/dashboard1.php">Trang chủ</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/project-web/backend/pages/dashboard1.php">Quản trị</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/project-web/backend/functions/sanpham/index.php">Sản phẩm</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/project-web/backend/pages/dashboard1.php">Giới thiệu</a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/project-web/backend/pages/dashboard1.php">Liên hệ</a>
+      </li>
   </ul>
       <?php
       // Đã đăng nhập rồi -> hiển thị tên Người dùng và menu Đăng xuất
